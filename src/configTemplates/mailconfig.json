@@ -1,0 +1,8 @@
+{
+    "mail": {
+        "HOST": "YOUR SMTP HERE",
+        "PORT": "THE PORT OF YOUR SMTP",
+        "USER": "YOUR MAIL ADRESS",
+        "PASSWD": "YOUR PASSWORD, THERE'S NO CRYPT OPTION FOR NOW"
+    }
+}
