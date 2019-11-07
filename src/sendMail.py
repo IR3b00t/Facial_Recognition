@@ -1,6 +1,7 @@
 import smtplib
 import json
 import os
+import log.py
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -22,7 +23,7 @@ with open(BASE_DIR + '/config/contact.json') as contact_json:
         s.login(MY_ADRESS, PASSWD)
         message = "The message to put in the mail"
         if not s.sendmail(MY_ADRESS, CONTACT_ADRESS, message):
-            print("Mail has been sent")
+            logger.info('Mail envoyer')
         else:
-            print("Error sending mail")
+            logger.error('Erreur d\'envoi du mail')
         s.quit()
