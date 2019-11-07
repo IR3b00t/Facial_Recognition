@@ -1,7 +1,7 @@
 import smtplib
 import json
 import os
-import log.py
+import log
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -18,12 +18,28 @@ with open(BASE_DIR + '/config/contact.json') as contact_json:
     for contact in contacts:
         CONTACT_NAME = contacts[contact]['NAME']
         CONTACT_ADRESS = contacts[contact]['ADRESS']
+
         s = smtplib.SMTP(host=HOST, port=PORT)
         s.starttls()
-        s.login(MY_ADRESS, PASSWD)
+
+        try:
+            log.writeLogFile(
+                'mail', 'info', '### Try connecting to server ###')
+            s.login(MY_ADRESS, PASSWD)
+            log.writeLogFile(
+                'mail', 'info', 'Identification success')
+        except smtplib.SMTPAuthenticationError:
+            log.writeLogFile(
+                'mail', 'info', 'FAILED: Server retuned bad username or password')
+            break
+        except smtplib.SMTPException:
+            log.writeLogFile(
+                'mail', 'info', 'FAILED: SERVER ABOUT TO DESTROY HUMANITY')
+            break
+
         message = "The message to put in the mail"
         if not s.sendmail(MY_ADRESS, CONTACT_ADRESS, message):
-            logger.info('Mail envoyer')
+            log.writeLogFile('mail', 'info', 'mail test envoyer')
         else:
-            logger.error('Erreur d\'envoi du mail')
+            log.writeLogFile('mail', 'info', '')
         s.quit()

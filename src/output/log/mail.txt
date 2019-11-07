@@ -1,0 +1,7 @@
+
+2019-11-07 18:39:05,306 :: INFO :: ### Try connecting to server ###
+2019-11-07 18:39:05,485 :: INFO :: Identification success
+2019-11-07 18:39:05,485 :: INFO :: Identification success
+2019-11-07 18:39:06,331 :: INFO :: mail test envoyer
+2019-11-07 18:39:06,331 :: INFO :: mail test envoyer
+2019-11-07 18:39:06,331 :: INFO :: mail test envoyer
