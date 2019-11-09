@@ -26,19 +26,15 @@ with open(BASE_DIR + '/config/contact.json') as contact_json:
         s.starttls()
 
         try:
-            log.writeLogFile(
-                'mail', 'info', '### Try connecting to server ###')
             # Try to log to the mail server
             s.login(MY_ADRESS, PASSWD)
-            log.writeLogFile(
-                'mail', 'info', 'Identification success')
         except smtplib.SMTPAuthenticationError:
             log.writeLogFile(
-                'mail', 'info', 'FAILED: Server retuned bad username or password')
+                'mail', 'critical', 'FAILED: Server retuned bad username or password')
             break
         except smtplib.SMTPException:
             log.writeLogFile(
-                'mail', 'info', 'FAILED: SERVER ABOUT TO DESTROY HUMANITY')
+                'mail', 'critical', 'FAILED: SERVER ABOUT TO DESTROY HUMANITY')
             break
 
         message = "The message to put in the mail"
@@ -46,5 +42,5 @@ with open(BASE_DIR + '/config/contact.json') as contact_json:
         if not s.sendmail(MY_ADRESS, CONTACT_ADRESS, message):
             log.writeLogFile('mail', 'info', 'The mail has been sent')
         else:
-            log.writeLogFile('mail', 'critical', 'Failed to send mail')
+            print('An error occured. Check log !')
         s.quit()

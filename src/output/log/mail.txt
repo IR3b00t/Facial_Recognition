@@ -1,7 +1,5 @@
-
-2019-11-07 18:39:05,306 :: INFO :: ### Try connecting to server ###
-2019-11-07 18:39:05,485 :: INFO :: Identification success
-2019-11-07 18:39:05,485 :: INFO :: Identification success
-2019-11-07 18:39:06,331 :: INFO :: mail test envoyer
-2019-11-07 18:39:06,331 :: INFO :: mail test envoyer
-2019-11-07 18:39:06,331 :: INFO :: mail test envoyer
+2019-11-09 23:00:35,025 :: INFO :: Connected to the mail server
+2019-11-09 23:00:35,779 :: INFO :: The mail has been sent
+2019-11-09 23:00:35,779 :: INFO :: The mail has been sent
+2019-11-09 23:02:59,122 :: INFO :: The mail has been sent
+2019-11-09 23:05:30,488 :: INFO :: The mail has been sent
