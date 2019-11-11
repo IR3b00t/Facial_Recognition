@@ -66,6 +66,9 @@ def FacialRecognition(faces):
             stroke = 1
             cv2.putText(frame, name, (x, y), font, 1,
                         color, stroke, cv2.LINE_AA)
+        else:
+            print(' Unkown person detected')
+            # here need to implement the mail to tell that a unkown person has been detected but need to send it once.
 
 
 def EyesDetection():
