@@ -1,12 +1,15 @@
 import smtplib
 import json
 import os
+from email.mime.text import MIMEText as text
 from src.log import *
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 
-def sendMail():
+def sendMail(message, subject):
+
+    print(message)
 
     # Load the mail server configuration ( user mailconfig.json template )
     with open(BASE_DIR + '/config/mailconfig.json') as config_json:
@@ -32,18 +35,23 @@ def sendMail():
                 # Try to log to the mail server
                 s.login(MY_ADRESS, PASSWD)
             except smtplib.SMTPAuthenticationError:
-                log.writeLogFile(
+                writeLogFile(
                     'mail', 'critical', 'FAILED: Server retuned bad username or password')
                 break
             except smtplib.SMTPException:
-                log.writeLogFile(
+                writeLogFile(
                     'mail', 'critical', 'FAILED: SERVER ABOUT TO DESTROY HUMANITY')
                 break
 
-            message = "The message to put in the mail"
+            # Let's configure the mail
+            message_to_send = text(message)
+            message_to_send['From'] = MY_ADRESS
+            message_to_send['To'] = CONTACT_ADRESS
+            message_to_send['Subject'] = subject
+
             # Send the mail or not obviously
-            if not s.sendmail(MY_ADRESS, CONTACT_ADRESS, message):
-                log.writeLogFile('mail', 'info', 'The mail has been sent')
+            if not s.sendmail(MY_ADRESS, CONTACT_ADRESS, message_to_send.as_string()):
+                writeLogFile('mail', 'info', 'The mail has been sent')
             else:
                 print('An error occured. Check log !')
             s.quit()
