@@ -6,6 +6,13 @@ from src.log import *
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
+'''
+Function to send mail
+message = the message you want to send
+subject = the subject of your message
+config is loaded from a JSON. (will change in futur)
+'''
+
 
 def sendMail(message, subject):
 
