@@ -61,7 +61,7 @@ class Detection(Thread):
 
         def FaceDetection(frame, gray):
             faces = self.FACE_CASCADE.detectMultiScale(
-                gray, scaleFactor=1.05, minNeighbors=3)
+                gray, scaleFactor=1.3, minNeighbors=4)
 
             for(x, y, z, h) in faces:
                 color_face = (0, 200, 0)  # BGR 0-255
